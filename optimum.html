@@ -1,0 +1,2494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinpaxtrade - Bootstrap Edition</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+           font-family: "Syne", sans-serif;
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 9, 14, 0.8);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .slide-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .slide-content p {
+            font-size: 1.25rem;
+        }
+        
+        .highlight-s {
+            background: linear-gradient(90deg, #00aae3 0, #00d4c0 100.04%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Swiper Navigation Buttons */
+       .hero-section .swiper-button-next, 
+.hero-section .swiper-button-prev {
+    color: #fff;
+}
+
+.testimonial-swiper-container .swiper-button-next,
+.testimonial-swiper-container .swiper-button-prev {
+    color: #00aae3;
+    background: rgba(255, 255, 255, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+        /* Navbar Styling */
+        .navbar {
+            transition: background-color 0.3s;
+        }
+        .navbar-brand img {
+            width: 87px;
+        }
+
+        /* Investment Popup */
+        #investment-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #000;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #investment-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #investment-popup .country {
+            color: #0d6efd; /* Bootstrap primary blue */
+            font-weight: bold;
+        }
+
+        /* Crypto Market Section */
+        .crypto-icon {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 170, 227, 0.2);
+        }
+
+        /* Price update animation */
+        .price-update {
+            animation: priceFlash 1s ease-in-out;
+        }
+
+        @keyframes priceFlash {
+            0% { background-color: rgba(0, 170, 227, 0.3); }
+            100% { background-color: transparent; }
+        }
+
+        .error-state {
+            color: #dc3545;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+             .slide-content h1 {
+                font-size: 2.5rem;
+            }
+            .slide-content p {
+                font-size: 1rem;
+            }
+        }
+        /* why-choose-us */
+         .why-choose-us {
+            position: relative;
+            background: linear-gradient(rgba(30, 35, 45, 0.95), rgba(15, 20, 30, 0.95)), url('assets/image/bg-why.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 100px 0;
+            color: white;
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-subtitle {
+            color: #8892b0;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .highlight-blue {
+            background: linear-gradient(90deg, #00aae3 0%, #00d4c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-container {
+            position: relative;
+            min-height: 600px;
+        }
+
+        .center-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 500px;
+            z-index: 2;
+        }
+
+        .center-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 170, 227, 0.2);
+        }
+
+        .feature-item {
+            position: absolute;
+            max-width: 300px;
+            padding: 30px;
+            background: rgba(45, 55, 70, 0.9);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            background: rgba(55, 65, 80, 0.95);
+            box-shadow: 0 20px 40px rgba(0, 170, 227, 0.3);
+        }
+
+        .feature-item.top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .feature-item.top-right {
+            top: 0;
+            right: 0;
+        }
+
+        .feature-item.bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        .feature-item.bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .feature-number {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .feature-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #8892b0;
+            margin: 0;
+        }
+
+        .connecting-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .connecting-lines svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .connecting-lines path {
+            stroke: rgba(0, 170, 227, 0.3);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 5, 5;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -100;
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .why-choose-us {
+                padding: 60px 0;
+            }
+            
+            .section-main-title {
+                font-size: 2.2rem;
+            }
+            
+            .features-container {
+                min-height: auto;
+                position: static;
+            }
+            
+            .center-image {
+                position: static;
+                transform: none;
+                width: 280px;
+                height: 350px;
+                margin: 0 auto 50px;
+            }
+            
+            .feature-item {
+                position: static;
+                max-width: none;
+                margin-bottom: 30px;
+            }
+            
+            .connecting-lines {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-main-title {
+                font-size: 1.8rem;
+            }
+            
+            .center-image {
+                width: 250px;
+                height: 300px;
+            }
+            
+            .feature-item {
+                padding: 25px;
+            }
+        }
+        /* plans-section */
+           .plans-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plans-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e0e0e0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-subtitle {
+            color: #8892b0;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            color: #1e2a3a;
+        }
+
+        .highlight-blue {
+            background: linear-gradient(90deg, #00aae3 0%, #00d4c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 170, 227, 0.2);
+            border-color: #00aae3;
+        }
+
+        .plan-card.featured {
+            background: linear-gradient(135deg, #00aae3 0%, #00d4c0 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .plan-card.featured .plan-title,
+        .plan-card.featured .plan-detail-label,
+        .plan-card.featured .plan-detail-value {
+            color: white;
+        }
+
+        .plan-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #e8f5ff, #f0f9ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .plan-card.featured .plan-icon {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .plan-icon i {
+            font-size: 30px;
+            color: #00aae3;
+        }
+
+        .plan-card.featured .plan-icon i {
+            color: white;
+        }
+
+        .plan-icon::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plan-icon::before {
+            content: '★';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            z-index: 1;
+        }
+
+        .plan-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1e2a3a;
+        }
+
+        .plan-details {
+            margin-bottom: 30px;
+        }
+
+        .plan-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f3f4;
+        }
+
+        .plan-card.featured .plan-detail {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .plan-detail:last-child {
+            border-bottom: none;
+        }
+
+        .plan-detail-label {
+            font-weight: 500;
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .plan-detail-value {
+            font-weight: 700;
+            color: #1e2a3a;
+            font-size: 1.1rem;
+        }
+
+        .plan-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #1e2a3a, #2d3748);
+            color: white;
+            transition: all 0.3s ease;
+            text-transform: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .plan-button:hover::before {
+            left: 100%;
+        }
+
+        .plan-button:hover {
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 170, 227, 0.3);
+        }
+
+        .plan-card.featured .plan-button {
+            background: white;
+            color: #00aae3;
+        }
+
+        .plan-card.featured .plan-button:hover {
+            background: #f8f9fa;
+            color: #0088b8;
+        }
+
+        .plan-button i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .plan-button:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-main-title {
+                font-size: 2.2rem;
+            }
+            
+            .plan-card.featured {
+                transform: none;
+                margin-bottom: 30px;
+            }
+            
+            .plan-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .plans-section {
+                padding: 60px 0;
+            }
+            
+            .section-main-title {
+                font-size: 1.8rem;
+            }
+            
+            .plan-card {
+                padding: 30px 20px;
+            }
+            
+            .plan-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animation for cards */
+        .plan-card {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .plan-card:nth-child(1) { animation-delay: 0.1s; }
+        .plan-card:nth-child(2) { animation-delay: 0.2s; }
+        .plan-card:nth-child(3) { animation-delay: 0.3s; }
+        .plan-card:nth-child(4) { animation-delay: 0.4s; }
+        .plan-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* footer */
+          body {
+            font-family: "Syne", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #1e2a3a 0%, #2d3748 100%);
+            color: white;
+            padding: 60px 0 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00aae3 0%, #00d4c0 100%);
+        }
+
+        .footer-logo img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            color: #8892b0;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 350px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, #00aae3 0%, #00d4c0 100%);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #8892b0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a:hover {
+            color: #00d4c0;
+            padding-left: 10px;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            left: -10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8892b0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 170, 227, 0.3);
+        }
+
+        .footer-contact-info {
+            margin-bottom: 15px;
+            color: #8892b0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-contact-info i {
+            width: 20px;
+            color: #00d4c0;
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom-text {
+            color: #8892b0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-bottom-links a {
+            color: #8892b0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #00d4c0;
+        }
+
+        .highlight-text {
+            background: linear-gradient(90deg, #00aae3 0%, #00d4c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 40px 0 0 0;
+            }
+            
+            .footer-bottom-links {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 15px;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .footer-description {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .social-icons {
+                justify-content: flex-start;
+            }
+        }
+        /* mtf-section */
+         .mt4-platform-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mt4-platform-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 170, 227, 0.03) 50%, transparent 70%);
+            z-index: 1;
+        }
+
+        .mt4-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mt4-subtitle {
+            color: #8892b0;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .mt4-main-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #1e2a3a;
+        }
+
+        .mt4-highlight {
+            background: linear-gradient(90deg, #00aae3 0%, #00d4c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mt4-description {
+            font-size: 1.2rem;
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .mt4-feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .mt4-feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        .mt4-feature-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .mt4-feature-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e2a3a;
+            margin: 0;
+        }
+
+        .mt4-platform-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .mt4-register-btn {
+            background: linear-gradient(135deg, #1e2a3a, #2d3748);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mt4-register-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .mt4-register-btn:hover::before {
+            left: 100%;
+        }
+
+        .mt4-register-btn:hover {
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 170, 227, 0.3);
+            color: white;
+        }
+
+        .mt4-platform-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .mt4-platform-icon {
+            width: 50px;
+            height: 50px;
+            background: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .mt4-platform-icon:hover {
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .mt4-platform-images {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mt4-platform-mockup {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px dashed #dee2e6;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mt4-platform-mockup:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 170, 227, 0.15);
+            border-color: #00aae3;
+        }
+
+        .mt4-platform-mockup i {
+            font-size: 3rem;
+            color: #00aae3;
+            margin-bottom: 20px;
+        }
+
+        /* Floating elements for visual interest */
+        .mt4-floating-element {
+            position: absolute;
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: mt4Float 6s ease-in-out infinite;
+        }
+
+        .mt4-floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .mt4-floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 70%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .mt4-floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            left: 85%;
+            animation-delay: 4s;
+        }
+
+        @keyframes mt4Float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .mt4-platform-section {
+                padding: 60px 0;
+            }
+            
+            .mt4-main-title {
+                font-size: 2.5rem;
+            }
+            
+            .mt4-platform-images {
+                height: 400px;
+                margin-top: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mt4-main-title {
+                font-size: 2rem;
+            }
+            
+            .mt4-feature-text {
+                font-size: 1.1rem;
+            }
+            
+            .mt4-platform-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .mt4-register-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .mt4-description {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mt4-platform-icons {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+            
+            .mt4-floating-element {
+                display: none;
+            }
+        }
+         /* testimoial */
+            body {
+            font-family: "Syne", sans-serif;
+        }
+
+        .testimonial-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e2a3a 0%, #2d3748 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="%23ffffff" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            z-index: 1;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-subtitle {
+            color: #8892b0;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .testimonial-main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: white;
+            text-align: center;
+        }
+
+        .testimonial-highlight {
+            background: linear-gradient(90deg, #00aae3 0%, #00d4c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonial-swiper {
+            padding: 40px 0 80px 0;
+        }
+
+        .testimonial-slide {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: auto;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-slide:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 170, 227, 0.2);
+        }
+
+        .testimonial-quote-icon {
+            font-size: 3rem;
+            color: #00aae3;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+            font-style: italic;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: auto;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(0, 170, 227, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-slide:hover .testimonial-avatar {
+            border-color: #00d4c0;
+            transform: scale(1.05);
+        }
+
+        .testimonial-author-info h5 {
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-author-info p {
+            color: #8892b0;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .testimonial-rating i {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        /* Swiper Navigation */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #00aae3;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 20px;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: rgba(0, 170, 227, 0.2);
+            color: #00d4c0;
+        }
+
+        /* Swiper Pagination */
+        .swiper-pagination-bullet {
+            background: rgba(255, 255, 255, 0.3);
+            width: 12px;
+            height: 12px;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: linear-gradient(135deg, #00aae3, #00d4c0);
+            transform: scale(1.2);
+        }
+
+        /* Stats section at the bottom */
+        .testimonial-stats {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00aae3 0%, #00d4c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            color: #8892b0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .testimonial-section {
+                padding: 60px 0;
+            }
+            
+            .testimonial-main-title {
+                font-size: 2.2rem;
+            }
+            
+            .testimonial-slide {
+                min-height: 350px;
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-main-title {
+                font-size: 1.8rem;
+            }
+            
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
+            
+            .testimonial-slide {
+                min-height: 320px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+        }
+
+        /* Custom scrollbar for better UX */
+        .testimonial-swiper {
+            overflow: visible;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Video -->
+    <video muted autoplay loop class="hero-video">
+        <source src="assets/image/hero.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/image/optimum-logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto bg-transparent px-2">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Market">Market</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Why-choose-us">Why Choose Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Plans">Our plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">My Account</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-light me-2">Sign In</a>
+                    <a href="#" class="btn btn-primary">Get Started Today</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Swiper -->
+    <div class="hero-section swiper">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+                <div class="slide-overlay"></div>
+                <div class="slide-content text-white p-4">
+                    <h1>Empowering Your <span class="highlight-s">Financial Future</span></h1>
+                    <p class="my-4">Take control of your investments and achieve your goals.</p>
+                    <a href="#" class="btn btn-primary btn-lg">Get Started Today</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+                <div class="slide-overlay"></div>
+                <div class="slide-content text-white p-4">
+                    <h1>Trade with Confidence, <span class="highlight-s">Grow with Ease</span></h1>
+                    <p class="my-4">Simplify your trading journey and maximize your gains.</p>
+                    <a href="#" class="btn btn-primary btn-lg">Get Started Today</a>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+                <div class="slide-overlay"></div>
+                <div class="slide-content text-white p-4">
+                    <h1>Where Trading Meets <span class="highlight-s">Innovation</span></h1>
+                    <p class="my-4">Cutting-edge technology for smarter trading.</p>
+                    <a href="#" class="btn btn-primary btn-lg">Get Started Today</a>
+                </div>
+            </div>
+        </div>
+        <!-- Swiper Navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <!-- Coinlib Widget -->
+    <iframe src="https://widget.coinlib.io/widget?type=horizontal_v2&theme=dark&pref_coin_id=1505&invert_hover=no" width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin-top: -1px; display: block;"></iframe>
+
+    <!-- Market Section -->
+    <section id="Market" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-muted text-uppercase mb-2">FOR BEGINNERS AND PROS</p>
+                <h2 class="display-5 fw-bold mb-4">Trade Spot, Margin, Futures & OTC on the Best Crypto Trading Platform</h2>
+            </div>
+            
+            <div class="row g-4" id="crypto-grid">
+                <!-- Loading state will be replaced with live data -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading live prices...</span>
+                    </div>
+                    <p class="text-muted mt-2">Loading live cryptocurrency prices...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MT4 Platform Section -->
+    <section id="MT4-Platform" class="mt4-platform-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Content Column -->
+                <div class="col-lg-6">
+                    <div class="mt4-content">
+                        <p class="mt4-subtitle">MT4 Platform</p>
+                        <h2 class="mt4-main-title">
+                            Use <span class="mt4-highlight">MT4?</span> Get Exclusive<br>
+                            Tools with Bullion
+                        </h2>
+                        
+                        <p class="mt4-description">
+                            Unless we are able to do the most pleasurable thing, all pleasure is 
+                            assumed, all pain is repelled by time.
+                        </p>
+
+                        <!-- Features List -->
+                        <ul class="mt4-feature-list">
+                            <li class="mt4-feature-item">
+                                <div class="mt4-feature-number">01</div>
+                                <p class="mt4-feature-text">Ultra fast trade execution</p>
+                            </li>
+                            <li class="mt4-feature-item">
+                                <div class="mt4-feature-number">02</div>
+                                <p class="mt4-feature-text">Trading from a smartphone or tablet</p>
+                            </li>
+                            <li class="mt4-feature-item">
+                                <div class="mt4-feature-number">03</div>
+                                <p class="mt4-feature-text">No dealing desk, no requotes</p>
+                            </li>
+                        </ul>
+
+                        <!-- Platform Buttons and Icons -->
+                        <div class="mt4-platform-buttons">
+                            <a href="#" class="mt4-register-btn">
+                                <span>Register</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="mt4-platform-icons">
+                            <div class="mt4-platform-icon" title="Windows">
+                                <i class="fab fa-windows"></i>
+                            </div>
+                            <div class="mt4-platform-icon" title="Apple">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                            <div class="mt4-platform-icon" title="Android">
+                                <i class="fab fa-android"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Images Column -->
+                <div class="col-lg-6">
+                    <div class="mt4-platform-images">
+                        <!-- Floating background elements -->
+                        <div class="mt4-floating-element"></div>
+                        <div class="mt4-floating-element"></div>
+                        <div class="mt4-floating-element"></div>
+                        
+                        <!-- Single Platform Mockup - Placeholder for your MT4 image -->
+                        <div class="mt4-platform-mockup">
+                            <i class="fas fa-chart-line"></i>
+                            <div>MT4 Trading Platform</div>
+                            <small style="opacity: 0.7; margin-top: 10px;"><img src="assets/image/Mtf.png" alt=""></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Why Choose Us Section -->
+    <section id="Why-choose-us" class="why-choose-us">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="section-title">
+                <p class="section-subtitle">Why Optimusassets</p>
+                <h2 class="section-main-title">
+                    Reasons to <span class="highlight-blue">Choose Optimusassets</span>
+                </h2>
+            </div>
+
+            <!-- Features Container -->
+            <div class="features-container d-none d-lg-block">
+                <!-- Connecting Lines SVG -->
+                <div class="connecting-lines">
+                    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Top left to center -->
+                        <path d="M 150 150 Q 400 200 600 300" />
+                        <!-- Top right to center -->
+                        <path d="M 1050 150 Q 800 200 600 300" />
+                        <!-- Bottom left to center -->
+                        <path d="M 150 450 Q 400 400 600 300" />
+                        <!-- Bottom right to center -->
+                        <path d="M 1050 450 Q 800 400 600 300" />
+                    </svg>
+                </div>
+
+                <!-- Center Image -->
+                <div class="center-image">
+                    <!-- Placeholder for man image -->
+                    <img src="assets/image/chooseus-1.png" alt="Professional Man" class="img-fluid">
+                </div>
+
+                <!-- Feature Items -->
+                <div class="feature-item top-left">
+                    <div class="feature-number">01</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h4 class="feature-title">Friendly User Interface</h4>
+                    <p class="feature-description">
+                        Improving Accessibility and User Satisfaction through a Friendly User Interface.
+                    </p>
+                </div>
+
+                <div class="feature-item top-right">
+                    <div class="feature-number">02</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 class="feature-title">24/7 Support</h4>
+                    <p class="feature-description">
+                        Our dedicated customer care team is at your service around the clock, ready to assist with your needs and answer your inquiries.
+                    </p>
+                </div>
+
+                <div class="feature-item bottom-left">
+                    <div class="feature-number">03</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="feature-title">Highly Secured</h4>
+                    <p class="feature-description">
+                        Our servers are highly secured with the best levels of encryption, your data is safe with us.
+                    </p>
+                </div>
+
+                <div class="feature-item bottom-right">
+                    <div class="feature-number">04</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h4 class="feature-title">Award Winner</h4>
+                    <p class="feature-description">
+                        As portrayed, we are an award winning trading institution.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mobile Layout -->
+            <div class="d-lg-none">
+                <div class="row justify-content-center d-none">
+                    <div class="col-md-8 text-center mb-5">
+                        <!-- Center Image for Mobile -->
+                        <div class="center-image d">
+                            <img src="assets/image/chooseus-1.png" alt="Professional Man" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="feature-item">
+                            <div class="feature-number">01</div>
+                            <div class="feature-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h4 class="feature-title">Friendly User Interface</h4>
+                            <p class="feature-description">
+                                Improving Accessibility and User Satisfaction through a Friendly User Interface.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="feature-item">
+                            <div class="feature-number">02</div>
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h4 class="feature-title">24/7 Support</h4>
+                            <p class="feature-description">
+                                Our dedicated customer care team is at your service around the clock, ready to assist with your needs and answer your inquiries.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="feature-item">
+                            <div class="feature-number">03</div>
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="feature-title">Highly Secured</h4>
+                            <p class="feature-description">
+                                Our servers are highly secured with the best levels of encryption, your data is safe with us.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="feature-item">
+                            <div class="feature-number">04</div>
+                            <div class="feature-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h4 class="feature-title">Award Winner</h4>
+                            <p class="feature-description">
+                                As portrayed, we are an award winning trading institution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+         <!-- Testimonial Section -->
+    <section id="Testimonials" class="testimonial-section">
+        <div class="container">
+            <div class="testimonial-content">
+                <!-- Section Title -->
+                <div class="text-center mb-5">
+                    <p class="testimonial-subtitle">What Our Clients Say</p>
+                    <h2 class="testimonial-main-title">
+                        Trusted by <span class="testimonial-highlight">Thousands</span> of Traders
+                    </h2>
+                </div>
+
+                <!-- Testimonial Carousel -->
+                <div class="swiper testimonial-swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- Testimonial 1 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-slide">
+                                <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                                <p class="testimonial-text">
+                                    "Optimum Assets has completely transformed my trading experience. The platform is incredibly user-friendly, and their customer support is available 24/7. I've seen consistent profits since I started trading with them."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Michael Rodriguez" class="testimonial-avatar">
+                                    <div class="testimonial-author-info">
+                                        <h5>Michael Rodriguez</h5>
+                                        <p>Professional Trader</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-slide">
+                                <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                                <p class="testimonial-text">
+                                    "As a beginner in crypto trading, I was nervous about choosing the right platform. Optimum Assets made everything easy with their educational resources and excellent support team. Highly recommended!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b5d1e3b7?w=150&h=150&fit=crop&crop=face" alt="Sarah Johnson" class="testimonial-avatar">
+                                    <div class="testimonial-author-info">
+                                        <h5>Sarah Johnson</h5>
+                                        <p>Crypto Enthusiast</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-slide">
+                                <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                                <p class="testimonial-text">
+                                    "The MT4 integration and lightning-fast execution times are impressive. I've been trading for 10 years, and Optimum Assets offers some of the best trading conditions I've experienced."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="David Chen" class="testimonial-avatar">
+                                    <div class="testimonial-author-info">
+                                        <h5>David Chen</h5>
+                                        <p>Senior Financial Analyst</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 4 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-slide">
+                                <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                                <p class="testimonial-text">
+                                    "Security and reliability are my top priorities when choosing a trading platform. Optimum Assets excels in both areas, and their transparent fee structure is refreshing."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Emma Thompson" class="testimonial-avatar">
+                                    <div class="testimonial-author-info">
+                                        <h5>Emma Thompson</h5>
+                                        <p>Investment Manager</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 5 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-slide">
+                                <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                                <p class="testimonial-text">
+                                    "The variety of trading instruments and the competitive spreads make Optimum Assets my go-to platform. Their mobile app is also fantastic for trading on the go."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" alt="James Wilson" class="testimonial-avatar">
+                                    <div class="testimonial-author-info">
+                                        <h5>James Wilson</h5>
+                                        <p>Day Trader</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 6 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-slide">
+                                <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                                <p class="testimonial-text">
+                                    "What sets Optimum Assets apart is their commitment to education and client success. The webinars and market analysis have significantly improved my trading skills."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" alt="Lisa Martinez" class="testimonial-avatar">
+                                    <div class="testimonial-author-info">
+                                        <h5>Lisa Martinez</h5>
+                                        <p>Portfolio Manager</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    
+                    <!-- Pagination dots -->
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="testimonial-stats">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="stat-item">
+                                <span class="stat-number">25K+</span>
+                                <p class="stat-label">Active Traders</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="stat-item">
+                                <span class="stat-number">$2.5B+</span>
+                                <p class="stat-label">Trading Volume</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="stat-item">
+                                <span class="stat-number">150+</span>
+                                <p class="stat-label">Countries Served</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="stat-item">
+                                <span class="stat-number">99.9%</span>
+                                <p class="stat-label">Uptime</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+       <!-- Plans Section -->
+    <section id="Plans" class="plans-section">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="section-title">
+                <p class="section-subtitle">Plans</p>
+                <h2 class="section-main-title">
+                    Our Trading <span class="highlight-blue">Plans</span>
+                </h2>
+            </div>
+
+            <!-- Plans Grid -->
+            <div class="row g-4 justify-content-center">
+                <!-- Starter Plan -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="plan-card">
+                        <div class="plan-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="plan-title">Starter Plan</h3>
+                        <div class="plan-details">
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Minimum Deposit</span>
+                                <span class="plan-detail-value">$5,000</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Maximum Deposit</span>
+                                <span class="plan-detail-value">$9,999</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Interest</span>
+                                <span class="plan-detail-value">15%</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Duration</span>
+                                <span class="plan-detail-value">30 Days</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Capital Return</span>
+                                <span class="plan-detail-value">Each Term</span>
+                            </div>
+                        </div>
+                        <button class="plan-button">
+                            Open Your Account <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Premium Plan (Featured) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="plan-card featured">
+                        <div class="plan-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="plan-title">Premium Plan</h3>
+                        <div class="plan-details">
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Minimum Deposit</span>
+                                <span class="plan-detail-value">$10,000</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Maximum Deposit</span>
+                                <span class="plan-detail-value">$49,999</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Interest</span>
+                                <span class="plan-detail-value">25%</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Duration</span>
+                                <span class="plan-detail-value">30 Days</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Capital Return</span>
+                                <span class="plan-detail-value">Each Term</span>
+                            </div>
+                        </div>
+                        <button class="plan-button">
+                            Open Your Account <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- VIP Plan -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="plan-card">
+                        <div class="plan-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="plan-title">VIP Plan</h3>
+                        <div class="plan-details">
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Minimum Deposit</span>
+                                <span class="plan-detail-value">$50,000</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Maximum Deposit</span>
+                                <span class="plan-detail-value">$199,999</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Interest</span>
+                                <span class="plan-detail-value">35%</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Duration</span>
+                                <span class="plan-detail-value">30 Days</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Capital Return</span>
+                                <span class="plan-detail-value">Each Term</span>
+                            </div>
+                        </div>
+                        <button class="plan-button">
+                            Open Your Account <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exclusive Plan -->
+                <div class="col-lg-4 col-md-6 offset-lg-2">
+                    <div class="plan-card">
+                        <div class="plan-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="plan-title">Exclusive Plan</h3>
+                        <div class="plan-details">
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Minimum Deposit</span>
+                                <span class="plan-detail-value">$200,000</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Maximum Deposit</span>
+                                <span class="plan-detail-value">$999,999</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Interest</span>
+                                <span class="plan-detail-value">25%</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Duration</span>
+                                <span class="plan-detail-value">30 Days</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Capital Return</span>
+                                <span class="plan-detail-value">Each Term</span>
+                            </div>
+                        </div>
+                        <button class="plan-button">
+                            Open Your Account <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="plan-card">
+                        <div class="plan-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="plan-title">Pro Plan</h3>
+                        <div class="plan-details">
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Minimum Deposit</span>
+                                <span class="plan-detail-value">$1,000,000</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Maximum Deposit</span>
+                                <span class="plan-detail-value">$10,000,000</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Interest</span>
+                                <span class="plan-detail-value">40%</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Duration</span>
+                                <span class="plan-detail-value">30 Days</span>
+                            </div>
+                            <div class="plan-detail">
+                                <span class="plan-detail-label">Capital Return</span>
+                                <span class="plan-detail-value">Each Term</span>
+                            </div>
+                        </div>
+                        <button class="plan-button">
+                            Open Your Account <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+
+      <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Company Info -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-logo">
+                        <img src="assets/image/optimum-logo.png" alt="Optimum Assets">
+                    </div>
+                    <p class="footer-description">
+                        Empowering your financial future through innovative trading solutions. 
+                        Join thousands of traders who trust <span class="highlight-text">Optimum Assets</span> 
+                        for their investment journey.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#market">Market</a></li>
+                        <li><a href="#why-choose-us">Why Choose Us</a></li>
+                        <li><a href="#plans">Our Plans</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Trading -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Trading</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Spot Trading</a></li>
+                        <li><a href="#">Margin Trading</a></li>
+                        <li><a href="#">Futures</a></li>
+                        <li><a href="#">OTC</a></li>
+                        <li><a href="#">Market Analysis</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="footer-title">Contact & Support</h5>
+                    <div class="footer-contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@optimumassets.com</span>
+                    </div>
+                    <div class="footer-contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="footer-contact-info">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Customer Support</span>
+                    </div>
+                    <div class="footer-contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Global Trading Platform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="footer-bottom-text">
+                            © 2024 <span class="highlight-text">Optimum Assets</span>. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="footer-bottom-links justify-content-md-end">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Risk Disclosure</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Investment Popup -->
+    <div id="investment-popup">
+        Someone from <span class="country">Italy</span> just invested <br>
+        <strong class="amount">$5000</strong>.
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script>
+
+           document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Testimonial Swiper
+           const testimonialSwiper = new Swiper('.testimonial-swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    992: {
+                        slidesPerView: 3,
+                    }
+                },
+                effect: 'slide',
+                speed: 800,
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // Initialize Swiper
+           const swiper = new Swiper(".hero-section", {
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                effect: "fade",
+                speed: 800,
+                fadeEffect: {
+                    crossFade: true
+                },
+            });
+
+            // Cryptocurrency Data Management
+            const cryptoIds = [
+                'bitcoin',
+                'ethereum', 
+                'solana',
+                'ripple',
+                'cardano',
+                'dogecoin',
+                'polygon',
+                'polkadot'
+            ];
+
+            const cryptoLogos = {
+                'bitcoin': 'assets/image/bitcoin.png',
+                'ethereum': 'assets/image/ethereum.png',
+                'solana': 'assets/image/solana.png',
+                'ripple': 'assets/image/xrp.png',
+                'cardano': 'assets/image/cardano.png',
+                'dogecoin': 'assets/image/dogecoin.png',
+                'polygon': 'assets/image/polygon.png',
+                'polkadot': 'assets/image/polkadot.png'
+            };
+
+            async function fetchCryptoData() {
+                try {
+                    const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoIds.join(',')}&vs_currencies=usd&include_24hr_change=true`);
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch crypto data');
+                    }
+                    
+                    const data = await response.json();
+                    renderCryptoCards(data);
+                } catch (error) {
+                    console.error('Error fetching crypto data:', error);
+                    renderErrorState();
+                }
+            }
+
+            function renderCryptoCards(data) {
+                const cryptoGrid = document.getElementById('crypto-grid');
+                cryptoGrid.innerHTML = '';
+
+                cryptoIds.forEach(cryptoId => {
+                    if (data[cryptoId]) {
+                        const crypto = data[cryptoId];
+                        const price = crypto.usd;
+                        const change = crypto.usd_24h_change;
+                        
+                        const cryptoName = cryptoId.charAt(0).toUpperCase() + cryptoId.slice(1);
+                        const displayName = cryptoId === 'ripple' ? 'XRP' : cryptoName;
+                        
+                        const isPositive = change >= 0;
+                        const changeColor = isPositive ? 'text-success' : 'text-danger';
+                        const changeIcon = isPositive ? 'fa-caret-up' : 'fa-caret-down';
+                        
+                        const cardHtml = `
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card  border-secondary h-100 text-center p-4">
+                                    <div class="mb-3">
+                                        <img src="${cryptoLogos[cryptoId]}" alt="${displayName}" class="crypto-icon mb-3">
+                                    </div>
+                                    <h5 class="card-title mb-3">${displayName}</h5>
+                                    <p class="card-text h5 mb-2" data-crypto="${cryptoId}">
+                                        ${formatPrice(price)} USD
+                                    </p>
+                                    <p class="card-text ${changeColor} small mb-0">
+                                        <i class="fas ${changeIcon}"></i> ${Math.abs(change).toFixed(2)}%
+                                    </p>
+                                </div>
+                            </div>
+                        `;
+                        
+                        cryptoGrid.innerHTML += cardHtml;
+                    }
+                });
+            }
+
+            function renderErrorState() {
+                const cryptoGrid = document.getElementById('crypto-grid');
+                cryptoGrid.innerHTML = `
+                    <div class="col-12">
+                        <div class="error-state">
+                            <i class="fas fa-exclamation-triangle fa-3x mb-3"></i>
+                            <h4>Unable to load live prices</h4>
+                            <p>Please check your internet connection and try again.</p>
+                            <button class="btn btn-primary" onclick="location.reload()">
+                                <i class="fas fa-refresh"></i> Retry
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function formatPrice(price) {
+                if (price >= 1000) {
+                    return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                } else if (price >= 1) {
+                    return price.toFixed(4);
+                } else {
+                    return price.toFixed(6);
+                }
+            }
+
+            function updatePrices() {
+                fetchCryptoData();
+                
+                // Add flash animation to updated prices
+                setTimeout(() => {
+                    document.querySelectorAll('[data-crypto]').forEach(element => {
+                        element.classList.add('price-update');
+                        setTimeout(() => element.classList.remove('price-update'), 1000);
+                    });
+                }, 500);
+            }
+
+            // Initial load
+            fetchCryptoData();
+            
+            // Update prices every 30 seconds
+            setInterval(updatePrices, 30000);
+
+            // Investment Popup Logic
+            const countries = ["Italy", "Germany", "France", "Brazil", "Canada", "United States", "India", "South Africa", "Mexico", "Australia", "UK"];
+            const popup = document.getElementById("investment-popup");
+
+            function showInvestmentPopup() {
+                const country = countries[Math.floor(Math.random() * countries.length)];
+                const amount = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
+
+                popup.querySelector(".country").textContent = country;
+                popup.querySelector(".amount").textContent = `$${amount.toLocaleString()}`;
+                popup.classList.add("show");
+
+                setTimeout(() => {
+                    popup.classList.remove("show");
+                }, 5000); // Hide after 5 seconds
+
+                // Schedule the next popup to appear randomly between 10 to 20 seconds
+                const nextDelay = Math.floor(Math.random() * 10000) + 10000;
+                setTimeout(showInvestmentPopup, nextDelay);
+            }
+
+            // Start first popup after a short delay
+            setTimeout(showInvestmentPopup, 5000);
+
+            // Change navbar background on scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-dark');
+                } else {
+                    navbar.classList.remove('bg-dark');
+                }
+            });
+        });
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+    // ... (existing code for Swiper and Investment Popup)
+
+    // Change navbar background on scroll and on mobile/md view
+    const navbar = document.querySelector('.navbar');
+    
+    function updateNavbarBackground() {
+        // Check if the scroll position is past 50px OR if the window width is <= 992px (for md/mobile)
+        if (window.scrollY > 50 || window.innerWidth <= 992) {
+            navbar.classList.add('bg-dark');
+        } else {
+            navbar.classList.remove('bg-dark');
+        }
+    }
+
+    // Run the function on initial load
+    updateNavbarBackground();
+    
+    // Add event listeners for scroll and resize
+    window.addEventListener('scroll', updateNavbarBackground);
+    window.addEventListener('resize', updateNavbarBackground);
+});
+    </script>
+
+</body>
+
+</html>
