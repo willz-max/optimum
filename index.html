@@ -10,15 +10,15 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         body {
-           font-family: "Syne", sans-serif;
+           font-family: "Open Sans", sans-serif;
         }
 
         /* --- Custom Theme Colors --- */
@@ -992,9 +992,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto px-2">
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Market">Market</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Why-choose-us">Why Choose Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#Products">Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Market">Market</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="#Why-choose-us">Why Choose Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">My Account</a></li>
                 </ul>
                 <div class="d-flex">
@@ -1007,7 +1007,7 @@
 
     <div class="hero-section">
         <video muted autoplay loop class="hero-video">
-            <source src="assets/image/new-hero.mp4" type="video/mp4">
+            <source src="assets/image/hero.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="hero-overlay"></div>
@@ -1097,8 +1097,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next d-none"></div>
+                <div class="swiper-button-prev d-none"></div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
@@ -1107,23 +1107,7 @@
 
     <iframe src="https://widget.coinlib.io/widget?type=horizontal_v2&theme=dark&pref_coin_id=1505&invert_hover=no" width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin-top: -1px; display: block;"></iframe>
 
-    <section id="Market" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <p class="text-muted text-uppercase mb-2">FOR BEGINNERS AND PROS</p>
-                <h2 class="display-5 fw-bold mb-4">Trade Spot, Margin, Futures & OTC on the Best Crypto Trading Platform</h2>
-            </div>
-            
-            <div class="row g-4" id="crypto-grid">
-                <div class="col-12 text-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading live prices...</span>
-                    </div>
-                    <p class="text-muted mt-2">Loading live cryptocurrency prices...</p>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <section id="MT4-Platform" class="mt4-platform-section">
         <div class="container">
@@ -1194,6 +1178,228 @@
         </div>
     </section>
 
+    
+    <section id="Products" class="tools-section">
+        <div class="floating-element"></div><div class="floating-element"></div><div class="floating-element"></div>
+        <div class="container">
+            <div class="tools-content">
+                <div class="text-center mb-5">
+                    <p class="tools-subtitle">Advanced Trading</p>
+                    <h2 class="tools-main-title">Professional <span class="tools-highlight">Trading Tools</span></h2>
+                    <p class="tools-description">Unlock professional trading capabilities with our comprehensive suite of analytical tools and features designed for success.</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h3 class="tool-title">Premium Economic Calendar</h3>
+                        <p class="tool-description">Start trading news like the pros with our comprehensive economic calendar featuring real-time market events and expert analysis.</p>
+                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3 class="tool-title">Technical Views</h3>
+                        <p class="tool-description">Access live trading setups based on pattern recognition and expert technical analysis from market professionals worldwide.</p>
+                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="tool-title">Alpha EA</h3>
+                        <p class="tool-description">Unlock live trading ideas with three advanced Expert Advisors optimized for your MT4 and MT5 trading platforms.</p>
+                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-comments"></i></div>
+                        <h3 class="tool-title">AI Market Buzz</h3>
+                        <p class="tool-description">Gain live market-moving insights powered by AI across over 35,000 tradable financial instruments and markets.</p>
+                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-bell"></i></div>
+                        <h3 class="tool-title">Trade Signals</h3>
+                        <p class="tool-description">Access daily trading ideas and technical setups in real-time from our team of expert market analysts and professionals.</p>
+                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="tool-title">Consumer Protection</h3>
+                        <p class="tool-description">Empowering consumers with knowledge and protection while maximizing your trading potential and security.</p>
+                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+     <section class="product-section-light">
+        <div class="floating-shapes">
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+        </div>
+        
+        <div class="container">
+            <div class="product-content">
+                <div class="section-header text-center mb-5">
+                    <h1 class="section-title">
+                        <span class="title-highlight">Comprehensive</span> Trading Products
+                    </h1>
+                    <p class="section-description">
+                        Explore our diverse range of trading instruments designed to meet every investment strategy and goal.
+                    </p>
+                </div>
+
+                <div class="product-feature row align-items-center">
+                    <div class="col-lg-6 col-md-12 feature-content">
+                        <div class="feature-icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <h2 class="feature-title">Copy Trading</h2>
+                        <p class="feature-description">
+                            Automatically replicate the trades of successful investors in real-time. Mirror strategies with customizable risk parameters and join a community of profitable traders.
+                        </p>
+                        <div class="feature-box">
+                            <h3 class="feature-box-title">Key Features</h3>
+                            <ul class="feature-list">
+                                <li>Follow unlimited professional traders</li>
+                                <li>Customize copy amounts and risk levels</li>
+                                <li>Set advanced risk management limits</li>
+                                <li>Real-time performance tracking dashboard</li>
+                                <li>One-click copy setup and management</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="cta-button">Learn More</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12 feature-image">
+                        <img src="assets/image/op-copy-trade.jpg" alt="Copy Trading Platform" />
+                    </div>
+                </div>
+
+                <div class="product-feature row align-items-center flex-row-reverse">
+                    <div class="col-lg-6 col-md-12 feature-content">
+                        <div class="feature-icon">
+                            <i class="fa fa-university"></i>
+                        </div>
+                        <h2 class="feature-title">Cryptocurrency Staking</h2>
+                        <p class="feature-description">
+                            Earn passive income by staking your crypto assets with flexible lock-up periods and highly competitive yields across multiple blockchain networks.
+                        </p>
+                        <div class="feature-box">
+                            <h3 class="feature-box-title">Staking Benefits</h3>
+                            <ul class="feature-list">
+                                <li>High APY rates up to 25% annually</li>
+                                <li>Multiple cryptocurrencies supported</li>
+                                <li>Flexible and fixed-term options</li>
+                                <li>Compound interest optimization</li>
+                                <li>Automatic rewards distribution</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="cta-button">Start Staking</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12 feature-image">
+                        <img src="assets/image/op-staking.jpg" alt="Cryptocurrency Staking" />
+                    </div>
+                </div>
+
+                <div class="product-feature row align-items-center">
+                    <div class="col-lg-6 col-md-12 feature-content">
+                        <div class="feature-icon">
+                            <i class="fa fa-bar-chart"></i>
+                        </div>
+                        <h2 class="feature-title">Exchange-Traded Funds</h2>
+                        <p class="feature-description">
+                            Invest in diversified ETFs that track indices, sectors, commodities, and more with exceptionally low fees and global market exposure.
+                        </p>
+                        <div class="feature-box">
+                            <h3 class="feature-box-title">ETF Advantages</h3>
+                            <ul class="feature-list">
+                                <li>Sector-specific and thematic ETFs</li>
+                                <li>Comprehensive global market coverage</li>
+                                <li>Ultra-low expense ratios</li>
+                                <li>Automatic dividend reinvestment</li>
+                                <li>Fractional share investing available</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="cta-button">Explore ETFs</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12 feature-image">
+                        <img src="assets/image/op-etf.jpg" alt="ETF Trading" />
+                    </div>
+                </div>
+
+                <div class="product-feature row align-items-center flex-row-reverse">
+                    <div class="col-lg-6 col-md-12 feature-content">
+                        <div class="feature-icon">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                        <h2 class="feature-title">Global Stock Trading</h2>
+                        <p class="feature-description">
+                            Trade thousands of stocks worldwide with advanced charting tools, real-time data, and commission-free trading on select international markets.
+                        </p>
+                        <div class="feature-box">
+                            <h3 class="feature-box-title">Trading Features</h3>
+                            <ul class="feature-list">
+                                <li>Access to global stock exchanges</li>
+                                <li>Advanced technical analysis tools</li>
+                                <li>Comprehensive fundamental data</li>
+                                <li>Extended hours trading sessions</li>
+                                <li>Dividend tracking and optimization</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="cta-button">Trade Stocks</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12 feature-image">
+                        <img src="assets/image/op-global.jpg" alt="Stock Trading Platform" />
+                    </div>
+                </div>
+
+                <div class="product-feature row align-items-center">
+                    <div class="col-lg-6 col-md-12 feature-content">
+                        <div class="feature-icon">
+                            <i class="fa fa-usd"></i>
+                        </div>
+                        <h2 class="feature-title">CFD Trading</h2>
+                        <p class="feature-description">
+                            Trade CFDs on multiple markets with flexible leverage options. Speculate on rising or falling prices without owning the underlying assets.
+                        </p>
+                        <div class="feature-box">
+                            <h3 class="feature-box-title">CFD Benefits</h3>
+                            <ul class="feature-list">
+                                <li>Flexible leverage options up to 1:500</li>
+                                <li>Short selling capabilities</li>
+                                <li>Ultra-tight spreads from 0.1 pips</li>
+                                <li>Negative balance protection included</li>
+                                <li>Advanced hedging capabilities</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="cta-button">Trade CFDs</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12 feature-image">
+                        <img src="assets/image/op-CFD.jpg" alt="CFD Trading" />
+                    </div>
+                </div>
+
+                </div>
+        </div>
+    </section>
+     <section id="Market" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-muted text-uppercase mb-2">FOR BEGINNERS AND PROS</p>
+                <h2 class="display-5 fw-bold mb-4">Trade Spot, Margin, Futures & OTC on the Best Crypto Trading Platform</h2>
+            </div>
+            
+            <div class="row g-4" id="crypto-grid">
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading live prices...</span>
+                    </div>
+                    <p class="text-muted mt-2">Loading live cryptocurrency prices...</p>
+                </div>
+            </div>
+        </div>
+    </section>
       <section id="Why-choose-us" class="why-choose-us">
         <div class="container">
             <div class="section-title">
@@ -1392,208 +1598,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="Tools" class="tools-section">
-        <div class="floating-element"></div><div class="floating-element"></div><div class="floating-element"></div>
-        <div class="container">
-            <div class="tools-content">
-                <div class="text-center mb-5">
-                    <p class="tools-subtitle">Advanced Trading</p>
-                    <h2 class="tools-main-title">Professional <span class="tools-highlight">Trading Tools</span></h2>
-                    <p class="tools-description">Unlock professional trading capabilities with our comprehensive suite of analytical tools and features designed for success.</p>
-                </div>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <div class="tool-icon"><i class="fas fa-calendar-alt"></i></div>
-                        <h3 class="tool-title">Premium Economic Calendar</h3>
-                        <p class="tool-description">Start trading news like the pros with our comprehensive economic calendar featuring real-time market events and expert analysis.</p>
-                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon"><i class="fas fa-check-circle"></i></div>
-                        <h3 class="tool-title">Technical Views</h3>
-                        <p class="tool-description">Access live trading setups based on pattern recognition and expert technical analysis from market professionals worldwide.</p>
-                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3 class="tool-title">Alpha EA</h3>
-                        <p class="tool-description">Unlock live trading ideas with three advanced Expert Advisors optimized for your MT4 and MT5 trading platforms.</p>
-                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon"><i class="fas fa-comments"></i></div>
-                        <h3 class="tool-title">AI Market Buzz</h3>
-                        <p class="tool-description">Gain live market-moving insights powered by AI across over 35,000 tradable financial instruments and markets.</p>
-                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon"><i class="fas fa-bell"></i></div>
-                        <h3 class="tool-title">Trade Signals</h3>
-                        <p class="tool-description">Access daily trading ideas and technical setups in real-time from our team of expert market analysts and professionals.</p>
-                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3 class="tool-title">Consumer Protection</h3>
-                        <p class="tool-description">Empowering consumers with knowledge and protection while maximizing your trading potential and security.</p>
-                        <a href="#" class="tool-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <section id="Products" class="product-section-light">
-        <div class="floating-shapes">
-            <div class="floating-shape"></div>
-            <div class="floating-shape"></div>
-            <div class="floating-shape"></div>
-        </div>
-        
-        <div class="container">
-            <div class="product-content">
-                <div class="section-header text-center mb-5">
-                    <h1 class="section-title">
-                        <span class="title-highlight">Comprehensive</span> Trading Products
-                    </h1>
-                    <p class="section-description">
-                        Explore our diverse range of trading instruments designed to meet every investment strategy and goal.
-                    </p>
-                </div>
-
-                <div class="product-feature row align-items-center">
-                    <div class="col-lg-6 col-md-12 feature-content">
-                        <div class="feature-icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <h2 class="feature-title">Copy Trading</h2>
-                        <p class="feature-description">
-                            Automatically replicate the trades of successful investors in real-time. Mirror strategies with customizable risk parameters and join a community of profitable traders.
-                        </p>
-                        <div class="feature-box">
-                            <h3 class="feature-box-title">Key Features</h3>
-                            <ul class="feature-list">
-                                <li>Follow unlimited professional traders</li>
-                                <li>Customize copy amounts and risk levels</li>
-                                <li>Set advanced risk management limits</li>
-                                <li>Real-time performance tracking dashboard</li>
-                                <li>One-click copy setup and management</li>
-                            </ul>
-                        </div>
-                        <a href="#" class="cta-button">Learn More</a>
-                    </div>
-                    <div class="col-lg-6 col-md-12 feature-image">
-                        <img src="assets/image/op-copy-trade.jpg" alt="Copy Trading Platform" />
-                    </div>
-                </div>
-
-                <div class="product-feature row align-items-center flex-row-reverse">
-                    <div class="col-lg-6 col-md-12 feature-content">
-                        <div class="feature-icon">
-                            <i class="fa fa-university"></i>
-                        </div>
-                        <h2 class="feature-title">Cryptocurrency Staking</h2>
-                        <p class="feature-description">
-                            Earn passive income by staking your crypto assets with flexible lock-up periods and highly competitive yields across multiple blockchain networks.
-                        </p>
-                        <div class="feature-box">
-                            <h3 class="feature-box-title">Staking Benefits</h3>
-                            <ul class="feature-list">
-                                <li>High APY rates up to 25% annually</li>
-                                <li>Multiple cryptocurrencies supported</li>
-                                <li>Flexible and fixed-term options</li>
-                                <li>Compound interest optimization</li>
-                                <li>Automatic rewards distribution</li>
-                            </ul>
-                        </div>
-                        <a href="#" class="cta-button">Start Staking</a>
-                    </div>
-                    <div class="col-lg-6 col-md-12 feature-image">
-                        <img src="assets/image/op-staking.jpg" alt="Cryptocurrency Staking" />
-                    </div>
-                </div>
-
-                <div class="product-feature row align-items-center">
-                    <div class="col-lg-6 col-md-12 feature-content">
-                        <div class="feature-icon">
-                            <i class="fa fa-bar-chart"></i>
-                        </div>
-                        <h2 class="feature-title">Exchange-Traded Funds</h2>
-                        <p class="feature-description">
-                            Invest in diversified ETFs that track indices, sectors, commodities, and more with exceptionally low fees and global market exposure.
-                        </p>
-                        <div class="feature-box">
-                            <h3 class="feature-box-title">ETF Advantages</h3>
-                            <ul class="feature-list">
-                                <li>Sector-specific and thematic ETFs</li>
-                                <li>Comprehensive global market coverage</li>
-                                <li>Ultra-low expense ratios</li>
-                                <li>Automatic dividend reinvestment</li>
-                                <li>Fractional share investing available</li>
-                            </ul>
-                        </div>
-                        <a href="#" class="cta-button">Explore ETFs</a>
-                    </div>
-                    <div class="col-lg-6 col-md-12 feature-image">
-                        <img src="assets/image/op-etf.jpg" alt="ETF Trading" />
-                    </div>
-                </div>
-
-                <div class="product-feature row align-items-center flex-row-reverse">
-                    <div class="col-lg-6 col-md-12 feature-content">
-                        <div class="feature-icon">
-                            <i class="fa fa-line-chart"></i>
-                        </div>
-                        <h2 class="feature-title">Global Stock Trading</h2>
-                        <p class="feature-description">
-                            Trade thousands of stocks worldwide with advanced charting tools, real-time data, and commission-free trading on select international markets.
-                        </p>
-                        <div class="feature-box">
-                            <h3 class="feature-box-title">Trading Features</h3>
-                            <ul class="feature-list">
-                                <li>Access to global stock exchanges</li>
-                                <li>Advanced technical analysis tools</li>
-                                <li>Comprehensive fundamental data</li>
-                                <li>Extended hours trading sessions</li>
-                                <li>Dividend tracking and optimization</li>
-                            </ul>
-                        </div>
-                        <a href="#" class="cta-button">Trade Stocks</a>
-                    </div>
-                    <div class="col-lg-6 col-md-12 feature-image">
-                        <img src="assets/image/op-global.jpg" alt="Stock Trading Platform" />
-                    </div>
-                </div>
-
-                <div class="product-feature row align-items-center">
-                    <div class="col-lg-6 col-md-12 feature-content">
-                        <div class="feature-icon">
-                            <i class="fa fa-usd"></i>
-                        </div>
-                        <h2 class="feature-title">CFD Trading</h2>
-                        <p class="feature-description">
-                            Trade CFDs on multiple markets with flexible leverage options. Speculate on rising or falling prices without owning the underlying assets.
-                        </p>
-                        <div class="feature-box">
-                            <h3 class="feature-box-title">CFD Benefits</h3>
-                            <ul class="feature-list">
-                                <li>Flexible leverage options up to 1:500</li>
-                                <li>Short selling capabilities</li>
-                                <li>Ultra-tight spreads from 0.1 pips</li>
-                                <li>Negative balance protection included</li>
-                                <li>Advanced hedging capabilities</li>
-                            </ul>
-                        </div>
-                        <a href="#" class="cta-button">Trade CFDs</a>
-                    </div>
-                    <div class="col-lg-6 col-md-12 feature-image">
-                        <img src="assets/image/op-CFD.jpg" alt="CFD Trading" />
-                    </div>
-                </div>
-
-                </div>
         </div>
     </section>
 
